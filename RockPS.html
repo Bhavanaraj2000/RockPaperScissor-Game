@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .bg{
+            background-color: rgb(2, 2, 57);
+            width: 1000px;
+            height: 1000px;
+            text-align: center;
+            margin-left: 100px;
+            color: antiquewhite;
+        }
+        .box{
+            
+            display: block;
+            /* position: absolute; */
+            /* background-color:blueviolet; */
+            color: antiquewhite;
+            padding: 50px;
+            border: 1px solid rgb(185, 177, 177);
+            margin-left: 150px;
+            margin-top: 50px ;
+            width: 500px;
+            
+        }
+        .user{
+            width: 100px;
+            height: 50px;
+            color: black;
+            background-color: antiquewhite;
+            display: inline-block;
+            margin-left: -85px;
+            position: absolute;
+        }
+        .Comp{
+            width: 100px;
+            height: 50px;
+            color: black;
+            background-color: antiquewhite;
+            display: inline-block;
+            margin-left: 500px;
+            position: relative;
+        }
+        .button{
+            margin-top: 50px;
+            display: inline-block;
+            /* margin-left: 50px; */
+        }
+        .butto{
+            display: inline-block;
+            margin-top: 50px;
+            margin-left: 50px;
+        }
+        .but{
+            display: inline-block;
+            margin-top: 50px;
+            margin-left: 50px;
+        }
+        .score{
+            margin-top: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg">
+        <h1>ROCK PAPPER SCISSORS</h1>
+        <div  class="box">
+            <h5 id="display"></h5>
+            <h3>User Score:</h3><h3 id="pts"></h3>
+            <h3>System Score:</h3><h3 id="ptss"></h3>
+
+            <div class="user" id="user">USER</div>
+            <div class="Comp" id="computer">COMPUTER</div>
+
+        </div>
+        <div class="button"><button onclick="buttonclick('rock')"  id="button" ><img src="stone.jpg" width="100px" height="100px"></button></div>
+        <div class="butto"><button onclick="buttonclick('paper')"  id="button" ><img src="paper.jpg" width="100px" height="100px"></button></div>
+        <div class="but"><button onclick="buttonclick('scissor')" id="button" ><img src="scissors.jpg" width="100px" height="100px"></button></div>
+        <div class="score"><h2>MAKE YOUR CHOICE NOW</h2></div>
+
+    </div>
+    <script>
+        let data=["rock","paper","scissor"];
+        let userpoints=0;
+        let syspoints=0;
+
+        function buttonclick(value){
+            let number=Math.floor(Math.random()*3);
+
+            let sysData=data[number];
+            console.log(sysData)
+            // document.getElementById('computer').value=sysData;
+
+            
+            let userData=value;
+            // console.log(userData);
+            // document.getElementById('user').value=userData;
+            console.log(userData)
+            if(sysData==userData){
+                document.getElementById('display').innerHTML='Tie';
+            }
+            else if(sysData=="rock"&& userData=="paper"){
+                document.getElementById('display').innerHTML='YOU WIn';
+                userpoints++;
+            }
+            else if(sysData=="rock"&& userData=="scissor"){
+                document.getElementById('display').innerHTML='YOU LOST';
+                syspoints++;
+            }
+            else if(sysData=="paper"&& userData=="scissor"){
+                document.getElementById('display').innerHTML='YOU WON';
+                userpoints++;
+            }
+            else if(sysData=="paper" && userData=="rock"){
+                document.getElementById('display').innerHTML='YOU LOST';
+                syspoints++;
+            }
+            else if(sysData=="scissor" && userData=="rock"){
+                document.getElementById('display').innerHTML='YOU WIN';
+                userpoints++;
+            }
+            else if(sysData=="scissor" && userData=="paper"){
+                document.getElementById('display').innerHTML='YOU LOST';
+
+            }
+            document.getElementById('pts').innerHTML=userpoints;
+            document.getElementById('ptss').innerHTML=syspoints;
+
+            if(userpoints==5|| syspoints==5){
+                if(userpoints==5){
+                    alert('YOU WIN !!!!!!!');
+                }
+                else if(syspoints==5){
+                    alert('SYSTEM WIN !!!!!!');
+                }
+                setTimeout(() =>{
+                    location.reload()
+                },2000)
+            }
+
+
+        }
+        
+
+    
+
+    </script>
+
+    
+</body>
+</html>
